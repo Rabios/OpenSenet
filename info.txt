@@ -1,0 +1,16 @@
+Some stuff used by Senet-GTK game stuff taken from following:
+
+Title background >> https://en.wikipedia.org/wiki/Senet#/media/File:Maler_der_Grabkammer_der_Nefertari_003.jpg
+Game background  >> https://wallpapersafari.com/w/mKqxHz
+Senet board      >> https://lh3.googleusercontent.com/proxy/X0N3YwqLSyZJo-aimq7_2qR4dyGICTs_YYj5jtQmCpiBlSBlR-947wtrh_Qeuqvd9LdiabqZcICYqqPtNKqHqLsVnHY5Wu1r868RfASUyydmlpWCQNFPHSq7PFapSK9a0Zx6BRKaY8uRhlk
+Cursor           >> https://i.stack.imgur.com/KQxab.png
+
+Pause buttons and ring were made by me via Piskel >> https://piskelapp.com
+Other sprites came from DragonRuby included sprites...
+
+Sounds used were grapped from freesound.org:
+Piece click sound    >> https://freesound.org/people/Sjonas88/sounds/538548
+Menus select sound   >> https://freesound.org/people/broumbroum/sounds/50561
+Rolling sticks sound >> https://freesound.org/people/Suicidity/sounds/91051
+
+Sounds licensed under the Creative Commons 0 License >> https://creativecommons.org/licenses/by/3.0

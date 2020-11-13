@@ -1,0 +1,5 @@
+Memorabilia:
+
+[25/October/2020]  Started working on OpenSenet
+[11/November/2020] First draft release on itch.io
+[13/November/2020] Official public release on itch.io and GitHub
