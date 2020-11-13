@@ -26,6 +26,10 @@ About Senet rules, You can find it [here!](http://www.pjhoover.com/senet.php)
 1. Player can select to move his pieces backward or forward if possible...
 2. Player also can pass turn manually.
 
+### Where to play and download?
+
+See the game page on itch.io [here!](https://rabios.itch.io/opensenet)
+
 ### License
 
 Game licensed under MIT license.
