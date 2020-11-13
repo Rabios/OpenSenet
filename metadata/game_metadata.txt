@@ -2,5 +2,5 @@ devid=Rabios
 devtitle=Rabia Alhaffar
 gameid=OpenSenet
 gametitle=OpenSenet
-version=0.2
+version=0.3
 icon=metadata/icon.png

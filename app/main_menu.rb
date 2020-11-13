@@ -36,7 +36,7 @@ def menu args
     }.sprite
   
     args.outputs.primitives << {
-      x: 360,
+      x: 380,
 	  y: 720,
 	  text: "OpenSenet",
 	  size_enum: 48,

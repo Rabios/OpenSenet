@@ -83,7 +83,7 @@ def piece_movable args, p, pieces
   # Get tiles available to, While combination of steps and tile of piece selected < 29
   if args.state.piece[:movable]
     move1 = args.state.piece[:tile] == 0 ? args.state.steps[args.state.current_sticks] : args.state.piece[:tile] + args.state.steps[args.state.current_sticks]
-    move2 = args.state.piece[:tile] > args.state.steps[args.state.current_sticks] ? args.state.piece[:tile] - args.state.steps[args.state.current_sticks] : args.state.piece[:tile]
+    move2 = args.state.piece[:tile] >= args.state.steps[args.state.current_sticks] ? args.state.piece[:tile] - args.state.steps[args.state.current_sticks] : args.state.piece[:tile]
 	if (args.state.tiles[move1])
       if (move1 < 25)
         x1 = args.state.board.x + args.state.tiles[move1][:x]
@@ -93,7 +93,7 @@ def piece_movable args, p, pieces
 	    y1 = args.state.board.y + args.state.tiles[25][:y]
       elsif (args.state.piece[:tile] == 25 && (move1 > 25) && (move1 <= 30 || move1 >= 30) && args.state.piece[:house_of_beauty])
 	    $gtk.log "1"
-		if (move1 > 25 && move1 < 30) # Here it was move1 > 29
+		if (move1 > 25 && move1 < 30)
 		  x1 = args.state.board.x + args.state.tiles[move1][:x]
 	      y1 = args.state.board.y + args.state.tiles[move1][:y]
 		elsif (move1 == 30)
@@ -136,16 +136,16 @@ def piece_movable args, p, pieces
 	  move1_not_empty = args.state.tiles[move1][:owner] != 0
 	  move1_protected_by_forward = move1_not_empty && (args.state.tiles[move1 + 1] && args.state.tiles[move1 + 1][:owner] != 0 && args.state.tiles[move1 + 1][:owner] != same)
 	  move1_protected_by_backward = move1_not_empty && (args.state.tiles[move1 - 1] && args.state.tiles[move1 - 1][:owner] != 0 && args.state.tiles[move1 - 1][:owner] != same)
-	  move1_not_forbidden = move1_not_same_player && (move1 < 26 || move1 >= 26 && args.state.piece[:tile] == 25 && args.state.piece[:house_of_beauty])
+	  move1_not_forbidden = move1_not_same_player && (move1 <= 25 || (move1 > 25 && args.state.piece[:tile] == 25 && args.state.tiles[move1][:owner] == 0 && args.state.piece[:tile] == 25 && args.state.piece[:house_of_beauty]))
 	  move1_empty_but_not_forbidden = args.state.tiles[move1][:owner] == 0 && move1_not_forbidden
 	  move1_not_same_position = args.state.piece[:tile] != move1
-	  move1_protected = move1_not_same_position && move1_not_same_player && (!(move1_protected_by_forward || move1_protected_by_backward) && move1_not_forbidden) || (move1_empty_but_not_forbidden && move1_not_forbidden)
+	  move1_protected = move1_not_same_position && move1_not_same_player && !(move1_protected_by_forward || move1_protected_by_backward) && move1_not_forbidden || (move1_empty_but_not_forbidden && move1_not_forbidden)
 	  
 	  move2_not_same_player = args.state.tiles[move2][:owner] != same
 	  move2_not_empty = args.state.tiles[move2][:owner] != 0
 	  move2_protected_by_forward = move2_not_empty && (args.state.tiles[move2 + 1] && args.state.tiles[move2 + 1][:owner] != 0 && args.state.tiles[move2 + 1][:owner] != same)
 	  move2_protected_by_backward = move2_not_empty && (args.state.tiles[move2 - 1] && args.state.tiles[move2 - 1][:owner] != 0 && args.state.tiles[move2 - 1][:owner] != same)
-	  move2_not_forbidden = move2_not_same_player || (move2 < 26 || move2 >= 26 && args.state.piece[:tile] == 25 && args.state.piece[:house_of_beauty])
+	  move2_not_forbidden = move2_not_same_player || (move2 <= 25 && args.state.piece[:tile] == 25 && args.state.piece[:house_of_beauty])
 	  move2_empty_but_not_forbidden = args.state.tiles[move2][:owner] == 0 && move2_not_forbidden
 	  move2_not_same_position = args.state.piece[:tile] != move2
 	  move2_protected = move2_not_same_position && move2_not_same_player && (!(move2_protected_by_forward || move2_protected_by_backward) && move2_not_forbidden) || (move2_empty_but_not_forbidden && move2_not_forbidden)
@@ -273,15 +273,17 @@ def piece_clicked args
 			if (p[:onboard] && p[:movable])
 			  args.outputs.sounds << args.state.click_sound
 			  piece_movable args, p, pieces
-			  
 		    elsif (p[:onboard] && !p[:movable])
 			  args.outputs.sounds << args.state.click_sound
 			  piece_unmovable args, p
 			end
 	      end
 	    end
-      end
+	  end
     end
+  end
+  if !mouse_on_rect(args, args.state.board.x, args.state.board.y, 1000, 300) && args.inputs.mouse.button_left
+	args.state.selected = 0
   end
 end
 
@@ -313,22 +315,27 @@ def tiles_points_controls args
 	    
 		# If piece is in house of waters, Piece get back to house of live (Tile 15)
 	    # And passes turn directly after stoping on it...
-		# IMPROVE: Maybe roll sticks before get back to tile 15?
-		# IMPROVE: We need to get piece even if we didn't selected it...
 		if args.state.piece[:tile] > 25 && args.state.piece[:onboard] && args.state.piece[:house_of_beauty]
 	      if args.state.piece[:tile] == 26
-		    if args.state.tiles[14][:owner] == 0
-		      args.state.tiles[args.state.piece[:tile]][:owner] = 0
-		      args.state.piece[:tile] = 14
-		      args.state.piece[:house_of_beauty] = false
-			  args.state.piece[:movable] = true
-			  args.state.tiles[args.state.piece[:tile]][:owner] = same
-		      args.state.finished = true
-		    else
-			  args.state.piece[:movable] = false
-			  args.state.piece[:house_of_beauty] = true
-			  args.state.finished = true
+			if !((rand(5) + 1) == 4)
+		      if args.state.tiles[14][:owner] == 0
+		        args.state.tiles[args.state.piece[:tile]][:owner] = 0
+		        args.state.piece[:tile] = 14
+		        args.state.piece[:house_of_beauty] = false
+			    args.state.piece[:movable] = true
+			    args.state.tiles[args.state.piece[:tile]][:owner] = same
+		      else
+			    args.state.piece[:movable] = false
+			    args.state.piece[:house_of_beauty] = true
+			  end
+			else
+			  args.state.tiles[26][:owner] = 0
+		      args.state.piece[:tile] = 30
+		      args.state.piece[:movable] = false
+		      remove_piece args
+			  roll_check args
 			end
+			args.state.finished = true
 		  end
 	    end
 	  end
