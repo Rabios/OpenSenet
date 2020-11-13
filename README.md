@@ -30,7 +30,7 @@ About Senet rules, You can find it [here!](http://www.pjhoover.com/senet.php)
 
 Game licensed under MIT license.
 
-About 3rd party stuff, It's mentioned in [`info.txt`](https://github.com/Rabios/OpenSenet/blob/master/info.txt).
+About 3rd party stuff, It's mentioned in [`info.txt`](https://github.com/Rabios/OpenSenet/blob/main/info.txt).
 
 ### Support
 
