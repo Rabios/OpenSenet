@@ -75,7 +75,6 @@ def piece_movable args, p, pieces
   args.state.piece = p
   # Set that we have selected a piece (1), If not it's 0
   args.state.selected = 1
-  #$gtk.log "INFO: CHECKING AVAILABLE TILES..."
   
   same = args.state.turn == 0 ? 1 : 2
   
@@ -92,7 +91,6 @@ def piece_movable args, p, pieces
 	    x1 = args.state.board.x + args.state.tiles[25][:x]
 	    y1 = args.state.board.y + args.state.tiles[25][:y]
       elsif (args.state.piece[:tile] == 25 && (move1 > 25) && (move1 <= 30 || move1 >= 30) && args.state.piece[:house_of_beauty])
-	    $gtk.log "1"
 		if (move1 > 25 && move1 < 30)
 		  x1 = args.state.board.x + args.state.tiles[move1][:x]
 	      y1 = args.state.board.y + args.state.tiles[move1][:y]
@@ -167,7 +165,6 @@ def piece_unmovable args, p
   if !args.state.piece[:movable] && args.state.piece[:house_of_beauty]
     if (((args.state.piece[:tile] + args.state.steps[args.state.current_sticks]) >= 30))
       # Else, We do special squares functionality
-	  $gtk.log "HERE 3 LIES!!!"
 	  if (args.state.piece[:tile] == 25 && args.state.steps[args.state.current_sticks] == 5) 
 	    remove_piece args
 		roll_check args
