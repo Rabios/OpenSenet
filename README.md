@@ -21,6 +21,8 @@ The goal was to provide open source and free Senet game running on most desktop 
 
 About Senet rules, You can find it [here!](http://www.pjhoover.com/senet.php)
 
+> NOTE: This game requires 2 player (PVP from same device, Playing versus CPU or online not offered yet...)
+
 ### Changes from original Senet
 
 1. Player can select to move his pieces backward or forward if possible...
