@@ -17,13 +17,6 @@
   You devs really helped me a lot! <3
 =end
 
-=begin
-  Plans:
-	POLISH: Fix bugs as much as possible
-	POLISH: Order code and improve comments in...
-    TODO: Publish game to public instead of draft...
-=end
-
 # How to play Senet? http://www.pjhoover.com/senet.php
 
 require "app/variables.rb"    # Variables
