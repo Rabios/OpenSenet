@@ -49,6 +49,10 @@ end
 
 # Main game loop
 def tick args
+  if $gtk.console.visible?
+	$gtk.console.close
+  end
+  
   $gtk.set_window_title "OpenSenet"
   if args.state.tick_count == 0
     $gtk.hide_cursor
