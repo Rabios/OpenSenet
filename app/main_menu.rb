@@ -129,7 +129,7 @@ def menu args
 	  args.state.label1_hovered = false
 	end
 	
-	if mouse_on_rect(args, 50, 160, 168, 40)
+	if mouse_on_rect(args, 50, 160, 150, 40)
 	  args.state.label2_hovered = true
 	  if args.inputs.mouse.button_left
 	    args.outputs.sounds << args.state.select_sound

@@ -33,7 +33,7 @@ def pause_menu args
   
   if args.state.label5_hovered
     args.outputs.primitives << {
-      x: 520,
+      x: 540,
 	  y: 500,
 	  text: "RESUME",
 	  size_enum: 20,
@@ -44,7 +44,7 @@ def pause_menu args
     }.label
   elsif !args.state.label5_hovered
     args.outputs.primitives << {
-      x: 520,
+      x: 540,
 	  y: 500,
 	  text: "RESUME",
 	  size_enum: 20,
@@ -57,7 +57,7 @@ def pause_menu args
   
   if args.state.label6_hovered
     args.outputs.primitives << {
-      x: 480,
+      x: 500,
 	  y: 350,
 	  text: "MAIN MENU",
 	  size_enum: 20,
@@ -68,7 +68,7 @@ def pause_menu args
     }.label
   elsif !args.state.label6_hovered
     args.outputs.primitives << {
-      x: 480,
+      x: 500,
 	  y: 350,
 	  text: "MAIN MENU",
 	  size_enum: 20,
@@ -81,7 +81,7 @@ def pause_menu args
   
   if args.state.label7_hovered
     args.outputs.primitives << {
-      x: 480,
+      x: 500,
 	  y: 200,
 	  text: "EXIT GAME",
 	  size_enum: 20,
@@ -92,7 +92,7 @@ def pause_menu args
     }.label
   elsif !args.state.label7_hovered
     args.outputs.primitives << {
-      x: 480,
+      x: 500,
 	  y: 200,
 	  text: "EXIT GAME",
 	  size_enum: 20,
@@ -103,7 +103,7 @@ def pause_menu args
     }.label
   end
   
-  if mouse_on_rect(args, 522, 445, 160, 50)
+  if mouse_on_rect(args, 542, 445, 160, 50)
     args.state.label5_hovered = true
 	if args.inputs.mouse.button_left
 	  args.outputs.sounds << args.state.select_sound
@@ -113,7 +113,7 @@ def pause_menu args
     args.state.label5_hovered = false
   end
   
-  if mouse_on_rect(args, 480, 300, 245, 42)
+  if mouse_on_rect(args, 500, 300, 245, 42)
     args.state.label6_hovered = true
     if args.inputs.mouse.button_left
 	  args.outputs.sounds << args.state.select_sound
@@ -123,7 +123,7 @@ def pause_menu args
     args.state.label6_hovered = false
   end
   
-  if mouse_on_rect(args, 480, 153, 245, 42)
+  if mouse_on_rect(args, 500, 153, 245, 42)
     args.state.label7_hovered = true
     if args.inputs.mouse.button_left
 	  args.outputs.sounds << args.state.select_sound

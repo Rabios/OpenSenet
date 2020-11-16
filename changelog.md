@@ -1,5 +1,10 @@
 # OpenSenet Changelog
 
+### v0.4 (16/November/2020)
+
+1. IMPROVED: Pause menu is centered, For real this time...
+2. IMPROVED: Physical borders of some labels...
+
 ### v0.3 [13/November/2020]
 
 1. FIXED: Now move points in forbidden tiles won't shown if tile occupied by enemy piece and selected piece in house of beauty
