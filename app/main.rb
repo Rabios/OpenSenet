@@ -1,6 +1,6 @@
 # Written by Rabia Alhaffar in 25/October/2020
 # OpenSenet, Simple Open-Source Senet game written in DragonRuby GTK!
-# Updated: 3/May/2021 (v0.5)
+# Updated: 3/June/2021 (v0.5)
 =begin
   All thanks goes to:
     @Akzidenz-Grotesk
