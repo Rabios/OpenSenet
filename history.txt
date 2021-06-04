@@ -1,5 +1,7 @@
 Memorabilia:
 
-[25/October/2020]  Started working on OpenSenet
-[11/November/2020] First draft release on itch.io (v0.1)
+[3/June/2021] Release of v0.5
+[16/November/2020] Release of v0.4, Did a full fix for game bugs!
 [13/November/2020] Official public release on itch.io and GitHub (v0.2 + v0.3)
+[11/November/2020] First draft release on itch.io (v0.1)
+[25/October/2020]  Started working on OpenSenet

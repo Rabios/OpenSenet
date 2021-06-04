@@ -1,18 +1,18 @@
 # Written by Rabia Alhaffar in 25/October/2020
 # OpenSenet, Simple Open-Source Senet game written in DragonRuby GTK!
-# Updated: 16/November/2020 (v0.4)
+# Updated: 3/May/2021 (v0.5)
 =begin
   All thanks goes to:
     @Akzidenz-Grotesk
-	@kniknoo
-	@amirrajan
-	@Islacrusez
-	@Hiro_r_b
-	@Adam
-	@craggar
+    @kniknoo
+    @amirrajan
+    @Islacrusez
+    @Hiro_r_b
+    @Adam
+    @craggar
     @danhealy
-	@phasefx
-	@Lernakow
+    @phasefx
+    @Lernakow
   
   You devs really helped me a lot! <3
 =end
@@ -35,9 +35,9 @@ require "app/game.rb"         # Gameplay scene
 # Check and draw current scene
 def check_scene args
   if args.state.scene == 0
-	menu args
+    menu args
   elsif args.state.scene == 1
-	game args
+    game args
   elsif args.state.scene == 2
     finish args
   elsif args.state.scene == 3
@@ -70,20 +70,32 @@ def tick args
   
   args.outputs.primitives << {
     x: 10,
-	y: 710,
-	text: args.gtk.current_framerate.to_i,
-	size_enum: 8,
-	r: 0,
-	g: 255,
-	b: 0,
-	a: 255
+    y: 710,
+    text: args.gtk.current_framerate.to_i,
+    size_enum: 8,
+    r: 0,
+    g: 255,
+    b: 0,
+    a: 255
   }.label
   
-  args.outputs.primitives << {
-	x: args.inputs.mouse.x,
-	y: args.inputs.mouse.y - 32,
-	w: 32,
-	h: 32,
-	path: "sprites/cursor.png"
-  }.sprite
+  if !is_mobile
+    args.outputs.primitives << {
+      x: args.inputs.mouse.x,
+      y: args.inputs.mouse.y - 32,
+      w: 32,
+      h: 32,
+      path: "sprites/cursor.png"
+    }.sprite
+  else
+    if !args.inputs.finger_one.nil?
+      args.outputs.primitives << {
+        x: args.inputs.mouse.x,
+        y: args.inputs.mouse.y - 32,
+        w: 32,
+        h: 32,
+        path: "sprites/cursor.png"
+      }.sprite
+    end
+  end
 end

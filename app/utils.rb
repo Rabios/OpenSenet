@@ -13,15 +13,33 @@ def other_pieces(e, i)
   _ = []
   e.each do |p|
     if !(p[:order] == i)
-	  _.push(p)
-	end
+      _.push(p)
+    end
   end
   return _
 end
 
+def is_mobile
+  return ($gtk.platform == "iOS" || $gtk.platform == "Android")
+end
+
+def touch_down(args)
+  return (args.state.touched == 1)
+end
+
+def touch_press(args)
+  return (args.state.touched == 1 && (args.state.touched != args.state.touched_previously))
+end
+
 # Checks if mouse pointer is on rectangle ;)
 def mouse_on_rect(args, x, y, w, h)
-  return AABB(args.inputs.mouse.x, args.inputs.mouse.y, 1, 1, x, y, w, h)
+  if !is_mobile
+    return AABB(args.inputs.mouse.x, args.inputs.mouse.y, 1, 1, x, y, w, h)
+  else
+    if !args.inputs.finger_one.nil?
+      return AABB(args.inputs.finger_one.x, args.inputs.finger_one.y, 1, 1, x, y, w, h)
+    end
+  end
 end
 
 # Here where values resetted in case turn passed to next player...
@@ -44,7 +62,7 @@ end
 def check_turn_finish args
   # If not extra turn and available rolls, Pass turn directly
   # If mistaked, Press space key to pass it manually (But automatical pass works fine for now...)
-  if ((args.state.pieces_moved == args.state.rolls && args.state.rolls >= 1 && !args.state.extra_turn) || args.inputs.keyboard.key_up.space || (args.inputs.mouse.button_left && mouse_on_rect(args, 1152, args.state.board.y + 104, 96, 96)))
+  if ((args.state.pieces_moved == args.state.rolls && args.state.rolls >= 1 && !args.state.extra_turn) || args.inputs.keyboard.key_up.space || ((args.inputs.mouse.button_left || touch_press(args)) && mouse_on_rect(args, 1152, args.state.board.y + 104, 96, 96)))
     args.state.finished = true
   end
   
@@ -65,9 +83,10 @@ def check_winner args
   # In this case, Winner is set to 1 (Player 1)
   args.state.player.pieces.each do |p|
     if !p[:onboard]
-	  player1_pieces_out_of_board += 1
-	end
+      player1_pieces_out_of_board += 1
+    end
   end
+  
   if player1_pieces_out_of_board == args.state.player.pieces.length()
     args.state.winner = 1
   end
@@ -76,14 +95,15 @@ def check_winner args
   # In this case, Winner is set to 2 (Player 2)
   args.state.enemy.pieces.each do |p|
     if !p[:onboard]
-	  player2_pieces_out_of_board += 1
-	end
+      player2_pieces_out_of_board += 1
+    end
   end
+  
   if player2_pieces_out_of_board == args.state.enemy.pieces.length()
     args.state.winner = 2
   end
   
   if (args.state.winner > 0)
-	args.state.scene = 2
+    args.state.scene = 2
   end
 end

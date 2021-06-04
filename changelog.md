@@ -1,6 +1,12 @@
 # OpenSenet Changelog
 
-### v0.4 (16/November/2020)
+### v0.5 [23/December/2020]
+
+1. IMPROVED: Removed unnecessary sprites!
+2. IMPROVED: Better README!
+3. IMPROVED: Android and iOS support!
+
+### v0.4 [16/November/2020]
 
 1. IMPROVED: Pause menu is centered, For real this time...
 2. IMPROVED: Physical borders of some labels...
@@ -17,7 +23,7 @@ I think game should be much better for now...
 
 ### v0.2 [13/November/2020]
 
-1. FIXED: Removing piece from house of beauty when rolling 5 won't cause crashes...
+FIXED: Removing piece from house of beauty when rolling 5 won't cause crashes...
 
 ### v0.1 [11/November/2020]
 
