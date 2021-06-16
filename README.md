@@ -13,11 +13,11 @@ The goal was to provide open source and free Senet game running on most desktop 
 
 ### How to play?
 
-1. Click on sticks to roll it.
+1. Click/Tap on sticks to roll it.
 
-2. Click on piece to select it and click on one possible moves (one of green circles), To deselect piece use right mouse button.
+2. Click/Tap on piece to select it and click on one possible moves (one of green circles), To deselect piece use right mouse button or click/tap out of board.
 
-3. You can click on the ring or hit space key to pass turn if no piece of player pieces can move on board.
+3. You can click/tap on the ring or hit space key to pass turn if no piece of player pieces can move on board.
 
 About Senet rules, You can find it [here!](http://www.pjhoover.com/senet.php)
 
